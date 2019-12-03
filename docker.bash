@@ -1,0 +1,1 @@
+docker run --rm -ti -v /$PWD:/opt/notebooks --workdir="//opt/notebooks" -p 8888:8888 continuumio/anaconda3 bash
