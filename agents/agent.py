@@ -1,3 +1,9 @@
+from agents.ddpg.actor import Actor
+from agents.ddpg.critic import Critic
+from agents.ddpg.ou_noise import OUNoise
+from agents.ddpg.replay_buffer import ReplayBuffer
+import numpy as np
+
 class DDPG():
     """Reinforcement Learning agent that learns using DDPG."""
     def __init__(self, task):
@@ -19,6 +25,12 @@ class DDPG():
         self.critic_target.model.set_weights(self.critic_local.model.get_weights())
         self.actor_target.model.set_weights(self.actor_local.model.get_weights())
 
+        # The reference for the values below can be seen in the DDPG paper
+        #   "Continuous control with deep reinforcement learning"
+        #   7. EXPERIMENT DETAILS
+        #
+        # This 
+
         # Noise process
         self.exploration_mu = 0
         self.exploration_theta = 0.15
@@ -32,12 +44,17 @@ class DDPG():
 
         # Algorithm parameters
         self.gamma = 0.99  # discount factor
-        self.tau = 0.01  # for soft update of target parameters
+        self.tau = 0.001  # for soft update of target parameters
+
+       # Tracking
+        self.score = -np.inf
+        self.best_score = -np.inf
 
     def reset_episode(self):
         self.noise.reset()
         state = self.task.reset()
         self.last_state = state
+        self.score = 0
         return state
 
     def step(self, action, reward, next_state, done):
@@ -52,6 +69,10 @@ class DDPG():
         # Roll over last state and action
         self.last_state = next_state
 
+        self.score = self.score + reward
+        if done:
+            self.best_score = max(self.score, self.best_score)
+   
     def act(self, state):
         """Returns actions for given state(s) as per current policy."""
         state = np.reshape(state, [-1, self.state_size])
