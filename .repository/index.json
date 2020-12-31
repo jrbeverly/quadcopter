@@ -1,0 +1,20 @@
+{
+  "slug": "quadcopter",
+  "namespace": "jrbeverly",
+  "status": "archived",
+  "icon": "icon.svg",
+  "license": {
+    "type": "MIT",
+    "content": "Jonathan Beverly <jrbeverly>"
+  },
+  "topics": [
+    "udacity-ml-nanodegree",
+    "quadcopter",
+    "ddpg"
+  ],
+  "languages": [
+    "Jupyter Notebook",
+    "Python",
+    "Shell"
+  ]
+}
