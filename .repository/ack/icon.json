@@ -1,0 +1,11 @@
+{
+  "name": "Drone",
+  "license": "Creative Commons Attribution 4.0 International",
+  "url": "https://openmoji.org/",
+  "attribution": ["https://github.com/hfg-gmuend/openmoji"],
+  "author": {
+    "name": "Kai Magnus Müller",
+    "url": "https://openmoji.org/library/"
+  },
+  "tags": ["technology", "extras-openmoji"]
+}
