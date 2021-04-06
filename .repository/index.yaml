@@ -1,0 +1,16 @@
+slug: quadcopter
+description: A quadcopter flying agent that learns to take off using reinforcement learning.
+project: udacity
+namespace:
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2021
+topics: |-
+  [
+    "udacity-ml-nanodegree",
+    "quadcopter",
+    "ddpg"
+  ]
